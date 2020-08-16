@@ -1,0 +1,35 @@
+#This code is for NxN matrice's multiplcation
+import time
+start_time = time.time()
+from random import seed
+from random import randint
+n=int(input('Enter the size N of matrices for N x N matrix: '))
+r1=r2=c1=c2=n#initializing rows and columns of matrix 1 and 2 as n just to make the code understandable
+
+m1=[]        #initialize matrix 1 as a list
+seed(1)          #seeding the randomizer
+m1=[[int(randint(0,9)) for i in range(r1)] for j in range(c1)]
+print('Randomized matrix 1 :')
+#print matrix 1
+for item in m1:
+    print(item)
+
+m2=[]        # initialize matrix 2 as a list
+seed(2)         #seeding the randomizer
+m2=[[int(randint(0,9)) for i in range(r2)] for j in range(c2)]
+print('Randomized matrix 2 :')
+#print(m2)
+for item in m2:
+    print(item)
+
+#res=np.dot(m1,m2)     # this can be done by importing numpy as np or this method works fine but is messy:
+res=[[0 for x in range(r1)] for y in range(c2)]      #creating a N x N zero matrix
+for i in range(len(m1)):
+    for j in range(len(m2[0])):
+        for k in range(len(m2)):
+            res[i][j]+= (m1[i][k] * m2[k][j])        #adding the multiplied values to zero matrix
+
+print('Resultant matrix:')
+for item in res:
+    print(item)
+print("Execution time= %s seconds, including the time taken by user to input data" %(time.time() - start_time) )
