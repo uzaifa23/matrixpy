@@ -1,0 +1,54 @@
+#Matrix Multiplication in python by all values form user
+import time
+start_time = time.time()
+matrix1=[]
+matrix2=[]
+
+class Error(Exception):
+    #it is base class
+    pass
+class BadValueError(Error):
+    #It will raise up when number of columns of matrix 1 will not equate to number of rows of matrix 2
+    pass
+
+r1 = int(input('Enter the rows in matrix 1 : '))
+c1 = int(input('Enter the columns in matrix 1 : '))
+for i in range(r1):
+    mylist=[]
+    print('Enter the elements of row', i+1 ,' of first matrix one at a time: ')
+    for j in range(c1):
+        mylist.append(int(input()))
+    matrix1.append(mylist)
+print('Your matrix1 is:')
+for item in matrix1:
+    print(item)
+
+r2 = int(input('Enter the rows in matrix 2 : '))
+if c1==r2:
+    pass
+else:
+    print('No. of rows in matrix 2 should be equal to No. of columns in matrix 1')
+    raise BadValueError
+c2 = int(input('Enter the clomuns in matrix 2 : '))
+for k in range(r2):
+    mylist=[]
+    print('Enter the elments of row', k+1 ,'of second matrix one at a time: ')
+    for l in range(c2):
+        mylist.append(int(input()))
+    matrix2.append(mylist)
+print('Your matrix2 is:')
+for item in matrix2:
+    print(item)
+
+res=[[0 for x in range(r1)] for y in range(c2)]
+for i in range(len(matrix1)):
+    for j in range(len(matrix2[0])):
+        for k in range(len(matrix2)):
+            res[i][j]+= (matrix1[i][k] * matrix2[k][j])
+print()
+print()
+print('Resultant matrix:')
+# to print in matrix form:
+for item in res:
+    print(item)
+print("Execution time= %s seconds" %(time.time() - start_time) )
